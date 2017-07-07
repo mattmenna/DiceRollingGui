@@ -13,6 +13,7 @@ public class DiceRolling {
     private JButton rollTheDiceButton;
     private JTable table1;
     private JTextField numberOfRolls;
+    private JTextField dieOutputTextField;
 
     public DiceRolling() {
         rollTheDiceButton.addActionListener(new Rolling());
@@ -20,15 +21,21 @@ public class DiceRolling {
 
     private class Rolling implements ActionListener{
 
+        int[] tableRowOutput;
         public Rolling(){
-
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            int side = Integer.getInteger(numberOfSides.toString());
 
+            int rolls = Integer.getInteger(numberOfRolls.toString());
+
+            int random = (int) (Math.random() * side + 1);
+            String sOutput = Integer.toString(random);
+                dieOutputTextField.setText(sOutput);
+            }
         }
-    }
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("DiceRolling");
